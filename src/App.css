@@ -1,0 +1,389 @@
+/* ============================================================
+   CardiacRisk AI — Light Beige Theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg:           #FAF9F6;
+  --bg-alt:       #F5F5DC;
+  --surface:      #FFFFFF;
+  --surface-sub:  #F8F7F4;
+  --border:       #E8E4DC;
+  --border-strong:#D4CFC5;
+  --text-primary: #1C1C1E;
+  --text-secondary:#4B5563;
+  --text-muted:   #9CA3AF;
+  --btn-primary:  #2F3E46;
+  --btn-hover:    #1F2D34;
+  --accent:       #2C3E50;
+  --red:          #C0392B;
+  --blue:         #2980B9;
+  --amber:        #D97706;
+  --green:        #16A34A;
+  --shadow:       0 10px 25px rgba(0,0,0,0.06);
+  --shadow-sm:    0 2px 8px rgba(0,0,0,0.04);
+  --radius:       12px;
+  --radius-sm:    8px;
+  --font:         'DM Sans', 'Segoe UI', sans-serif;
+  --font-mono:    'DM Mono', 'Fira Code', monospace;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── App layout ────────────────────────────────────────── */
+.app-root {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 13px;
+}
+
+/* ── Sidebar ───────────────────────────────────────────── */
+.sidebar {
+  background: var(--bg-alt);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  transition: width 0.3s ease, min-width 0.3s ease, padding 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-logo-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #C0392B, #8B0000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(192,57,43,0.3);
+}
+
+.sidebar-logo-title {
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+/* ── Top bar ───────────────────────────────────────────── */
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  height: 54px;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar-toggle {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 19px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+.topbar-toggle:hover {
+  background: var(--surface-sub);
+  color: var(--text-secondary);
+}
+
+.topbar-title {
+  flex: 1;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.risk-badge {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+}
+
+/* ── Tabs ──────────────────────────────────────────────── */
+.tabs-bar {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+}
+
+.tab-btn {
+  padding: 13px 18px;
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+  font-family: var(--font);
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--text-secondary); }
+.tab-btn.active {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom-color: var(--accent);
+}
+
+/* ── Content ───────────────────────────────────────────── */
+.content-area {
+  flex: 1;
+  padding: 24px 28px;
+  overflow-y: auto;
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  letter-spacing: -0.1px;
+}
+
+/* ── Stat row inside cards ─────────────────────────────── */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 12px;
+  background: var(--surface-sub);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ── SidebarInput section headers ──────────────────────── */
+.section-header {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── Range inputs ──────────────────────────────────────── */
+.range-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.range-value-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.range-value-row .current {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--btn-primary);
+  cursor: pointer;
+}
+
+/* ── Toggle pills ──────────────────────────────────────── */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.toggle-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ── PredictButton ─────────────────────────────────────── */
+.predict-btn-wrap {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.predict-btn {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: var(--radius-sm);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  font-family: var(--font);
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(47,62,70,0.3);
+}
+
+.predict-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(47,62,70,0.38);
+}
+
+.predict-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Risk tags (comorbidity pills) ─────────────────────── */
+.risk-tag {
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 9px 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+}
+
+/* ── ResultsPlaceholder ────────────────────────────────── */
+.placeholder-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+  gap: 14px;
+  color: var(--text-muted);
+}
+
+.placeholder-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.placeholder-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.6;
+}
+
+.error-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
